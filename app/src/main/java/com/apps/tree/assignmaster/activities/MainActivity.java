@@ -8,8 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.apps.tree.assignmaster.R;
+import com.apps.tree.assignmaster.task.Task;
+import com.apps.tree.assignmaster.task.TasksController;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,11 +27,28 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        TasksController tasksController = new TasksController();
+        tasksController.schedule.getTasks();
+        ArrayAdapter<Task> adapter = new ArrayAdapter<Task>(this, android.R.layout.list_content, tasksController.tasks());
+        ListView listView = (ListView) findViewById(R.id.list_view);
+        assert listView != null;
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(getApplicationContext(),
+                        "Click ListItem Number " + position, Toast.LENGTH_LONG)
+                        .show();
             }
         });
     }

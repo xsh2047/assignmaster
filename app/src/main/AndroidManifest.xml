@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.apps.tree.assignmaster">
 
-    <application
+    <application android:name="com.orm.SugarApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -21,4 +21,8 @@
         <activity android:name=".activities.LoginActivity"></activity>
     </application>
 
+    <meta-data android:name="DATABASE" android:value="assignmaster.db" />
+    <meta-data android:name="VERSION" android:value="2" />
+    <meta-data android:name="QUERY_LOG" android:value="true" />
+    <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.apps.tree.assignmaster" />
 </manifest>
