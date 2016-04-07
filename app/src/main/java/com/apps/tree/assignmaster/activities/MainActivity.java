@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.apps.tree.assignmaster.CustomAdapter;
 import com.apps.tree.assignmaster.R;
 import com.apps.tree.assignmaster.task.Task;
 import com.apps.tree.assignmaster.task.TasksController;
@@ -37,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TasksController tasksController = new TasksController();
+        tasksController.populate();
         tasksController.schedule.getTasks();
-        ArrayAdapter<Task> adapter = new ArrayAdapter<Task>(this, android.R.layout.list_content, tasksController.tasks());
+        CustomAdapter adapter = new CustomAdapter(tasksController.tasks());
         ListView listView = (ListView) findViewById(R.id.list_view);
         assert listView != null;
         listView.setAdapter(adapter);
