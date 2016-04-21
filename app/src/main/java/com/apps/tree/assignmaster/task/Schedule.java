@@ -11,9 +11,12 @@ import java.util.Date;
 public class Schedule extends SugarRecord{
     private ArrayList<Task> tasks;
 
-    //TODO
     public void getTasks(){
         tasks = (ArrayList<Task>) Task.listAll(Task.class);
+    }
+
+    public void setTasks(ArrayList<Task> tasks){
+        this.tasks = tasks;
     }
 
     //TODO
@@ -22,8 +25,10 @@ public class Schedule extends SugarRecord{
     }
 
     //TODO
-    public void getDayTasks(Date date){
-
+    public ArrayList<Task> getDayTasks(Date date){
+        //
+        // Task.find(Task.class, )
+        return null;
     }
 
     //TODO
